@@ -1,0 +1,107 @@
+:toc: left
+// :toc: 
+:toclevels: 3
+:source-highlighter: coderay
+:sectnums: 3
+:nofooter: 
+
+// 各種ファイルが入っているフォルダ
+:imagesdir: images
+:stylesdir: styles
+
+:example-caption: 例
+:table-caption: 表
+:figure-caption: 図
+:section-refsig: 章
+:data-uri:   
+:xrefstyle: short
+:stylesheet: adoc-foundation-potion.css
+
+:figuresize: 400pt
+
+
+= Asciidocサンプル
+
+== はじめに
+AsciiDoc、graphviz、PlantUMLを使ってソフトウェアの仕様書を作るためのサンプルです。
+
+== AsciiDocの書き方
+Markdownを書いたことがあれば似たような感じでかけます。困ったら以下を参考にどう書くのか調べながら書いていけばよいと思います。
+
+link:https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoctor 文法クイックリファレンス(日本語訳)]
+
+== Markdownとの違い
+違いは以下にまとめられています。
+link:https://asciidoctor.org/docs/asciidoc-vs-markdown/[AsciiDoc vs Markdown, asciidoctor docs]
+
+よく使用し、Markdownと書き方が違うものを示す
+
+=== 見出し
+Markdownでは#で記述するがasciidocでは=を使用する。
+Markdownと同じで=の数でレベルを表現する
+
+=== 箇条書き
+Markdownでは-で記述するがasciidocでは*を使用する。
+箇条書きの字下げはMarkdownでは字下げして-であったが、asciidocでは*の数で表現する。
+
+* 箇条書き1
+* 箇条書き2
+** １段下げ
+*** 2段下げ
+
+=== 番号付きの箇条書き
+Markdownでは数値. でasciidocでは.を使用する。.の数で字下げ
+
+. 番号付き1
+.. 1段下げ
+... 2段下げ
+
+=== テーブル
+テーブルは|===で始めて|===で終わるブロック内に書きます。
+行の終わりの|は不要です。
+ヘッダはヘッダとデータの行の間に空白を入れるか、ブロックの頭にオプションでヘッダを指定します。
+オプションの指定で幅の自動調整も一緒にしたりするのでブロックの頭にオプション指定したほうが良いでしょう。
+
+```
+[options="header,autowidth"]
+|===
+|col1|col2|col3
+|data1|data2|data3
+|===
+
+もしくは
+
+|===
+|col1|col2|col3
+
+|data1|data2|data3
+|===
+```
+
+[options="header,autowidth"]
+|===
+|col1|col2|col3
+|data1|data2|data3
+|===
+
+Excelであるセルの結合のようなことも出来ます。
+
+.結合表
+[options="header,autowidth"]
+|====
+|col1|col2|col3
+3+|数値のあとに+を書くと横の結合
+.2+|.数値+だと縦結合|2-2|2-3
+|3-2|3-2
+|====
+
+
+
+=== 図の挿入
+image::<path>[]で図を挿入することができます。
+imagesdirを設定することで、画像を入れている親フォルダのパスを省略できる。
+
+
+[#参照ラベル]
+.タイトル
+image::400x300.png[]
